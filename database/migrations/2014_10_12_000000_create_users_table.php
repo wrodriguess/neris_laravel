@@ -16,11 +16,10 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('cpf')->unique();
             $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->double('balance')->nullable();
-            $table->enum('type', ['common', 'shopkeeper']);
+            $table->rememberToken();
             $table->timestamps();
         });
     }
